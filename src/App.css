@@ -171,6 +171,10 @@
 .nav_style > .active {
   color: blue;
 }
+.searchBox {
+  margin-bottom: 20px;
+  width: 300px;
+}
 /*-------------------------------------media -----------------------------*/
 @media screen and (max-width: 1340px) {
   .navbar_toggle {

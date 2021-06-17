@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import '../App.css'
 import Flippy, { BackSide, FrontSide } from 'react-flippy'
 import { IoIosArrowDropdown } from 'react-icons/io'
@@ -131,4 +131,4 @@ function TotalCases(props) {
   )
 }
 
-export default TotalCases
+export default memo(TotalCases)

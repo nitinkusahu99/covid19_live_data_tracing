@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 function SearchByCountry() {
   const [countries, setcountries] = useState([])
   const [countryData, setcountryData] = useState(null)
   const [con, setcon] = useState(false)
-
   document.onclick = function () {
     setcountryData(null)
     setcon(false)
@@ -82,4 +81,4 @@ function SearchByCountry() {
   )
 }
 
-export default SearchByCountry
+export default memo(SearchByCountry)

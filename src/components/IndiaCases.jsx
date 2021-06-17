@@ -18,6 +18,22 @@ function IndiaCases() {
       })
     })
   }, [])
+  const searchMyState = () => {
+    const filter = document.getElementById('myinput').value.toUpperCase()
+    let table = document.getElementById('mytable')
+    let tr = table.getElementsByTagName('tr')
+    for (var i = 1; i < tr.length; i++) {
+      let td = tr[i].getElementsByTagName('td')[1]
+      if (td) {
+        let textvalue = td.textContent || td.innerHTML
+        if (textvalue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = ''
+        } else {
+          tr[i].style.display = 'none'
+        }
+      }
+    }
+  }
   return (
     <>
       <section>
@@ -38,7 +54,18 @@ function IndiaCases() {
           </a>
         </div>
 
-        <Table striped bordered hover responsive="sm">
+        <div className="container searchBox">
+          <input
+            className="form-control form-outline"
+            id="myinput"
+            type="text"
+            placeholder="search by State here..."
+            onKeyUp={searchMyState}
+            autoComplete="off"
+          />
+        </div>
+
+        <Table striped bordered hover responsive="sm" id="mytable">
           <thead>
             <tr>
               <th>id</th>

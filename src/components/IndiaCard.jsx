@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import '../App.css'
 import corona_img from '../images/corona.png'
 import c2 from '../images/c2.png'
@@ -63,4 +63,4 @@ function IndiaCard(props) {
   )
 }
 
-export default IndiaCard
+export default memo(IndiaCard)

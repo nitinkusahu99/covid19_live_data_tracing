@@ -26,10 +26,26 @@ function Home() {
     }
   }, [])
 
+  const searchMyCountry = () => {
+    let data = document.getElementById('myInput').value.toUpperCase()
+    let table = document.getElementById('mytable')
+    let tr = table.getElementsByTagName('tr')
+    for (var i = 1; i < tr.length; i++) {
+      let td = tr[i].getElementsByTagName('td')[1]
+      if (td) {
+        let textvalue = td.textContent || td.innerHTML
+        if (textvalue.toUpperCase().indexOf(data) > -1) {
+          tr[i].style.display = ''
+        } else {
+          tr[i].style.display = 'none'
+        }
+      }
+    }
+  }
   function updateStatus() {
     if (navigator.onLine);
     else {
-      document.getElementById('status').innerHTML = 'you are offline'
+      document.getElementById('status').innerHTML = 'oops! you are offline...'
     }
   }
   return (
@@ -38,7 +54,6 @@ function Home() {
         id="status"
         className="text-center bg-warning"
         style={{
-          maxWidth: 'fit-content',
           textTransform: 'lowercase',
           textAlign: 'center',
         }}
@@ -64,7 +79,19 @@ function Home() {
             <GoArrowDown />
           </a>
         </div>
-        <Table striped bordered hover responsive="sm">
+
+        <div className="container searchBox">
+          <input
+            className="form-control form-outline"
+            id="myInput"
+            type="text"
+            placeholder="search by country here..."
+            onKeyUp={searchMyCountry}
+            autoComplete="off"
+          />
+        </div>
+
+        <Table striped bordered hover responsive="sm" id="mytable">
           <thead>
             <tr>
               <th>id</th>
