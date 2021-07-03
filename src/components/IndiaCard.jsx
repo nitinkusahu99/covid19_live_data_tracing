@@ -3,7 +3,7 @@ import '../App.css'
 import corona_img from '../images/corona.png'
 import c2 from '../images/c2.png'
 import c3 from '../images/c3.png'
-import c4 from '../images/c4.png'
+import c4 from '../images/c6.png'
 import { IoIosArrowDropdown } from 'react-icons/io'
 function IndiaCard(props) {
   const data = props.data
