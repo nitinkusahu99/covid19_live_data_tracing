@@ -93,6 +93,7 @@ function IndiaCases() {
         </Table>
         {spin === true ? (
           <div className="text-center">
+            <p className="text-danger">data is loading...</p>
             <Spinner animation="border" variant="info" />
           </div>
         ) : null}

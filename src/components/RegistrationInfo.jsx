@@ -1,6 +1,9 @@
 import React from 'react'
+import { useRouteMatch } from 'react-router-dom'
 
 function RegistrationInfo() {
+  const match = useRouteMatch()
+  console.warn(match)
   return (
     <div>
       <h3 className="text-center bg-primary">How to get vaccine</h3>
@@ -42,7 +45,6 @@ function RegistrationInfo() {
         >
           Aarogya Setu App
         </a>
-        &{' '}
         <a
           target="_blank"
           rel="noreferrer"

@@ -1,12 +1,18 @@
 import React, { lazy, Suspense, useEffect } from 'react'
 import $ from 'jquery'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  useRouteMatch,
+} from 'react-router-dom'
 import { BiRightArrowCircle } from 'react-icons/bi'
 const Covid19Info = lazy(() => import('../components/Covid19Info'))
 const VaccineInfo = lazy(() => import('../components/VaccineInfo'))
 const RegistrationInfo = lazy(() => import('../components/RegistrationInfo'))
 const Others = lazy(() => import('../components/Others'))
-function Vaccination() {
+function Vaccination(props) {
   useEffect(() => {
     $(document).ready(function () {
       $('ul li').click(function () {
@@ -14,6 +20,10 @@ function Vaccination() {
       })
     })
   }, [])
+
+  const match = useRouteMatch()
+  console.log(`${match.path}`)
+
   return (
     <>
       <div className="container">
@@ -29,7 +39,7 @@ function Vaccination() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/vaccineInfo">
+                  <Link to={`${match.path}/vaccineInfo`}>
                     <a href="/#" alt="error">
                       vaccination <BiRightArrowCircle />
                     </a>
@@ -37,7 +47,7 @@ function Vaccination() {
                 </li>
 
                 <li>
-                  <Link to="/registration-info">
+                  <Link to={`${match.path}/registration-info`}>
                     <a href="/#" alt="error">
                       registration <BiRightArrowCircle />
                     </a>
@@ -45,7 +55,7 @@ function Vaccination() {
                 </li>
 
                 <li>
-                  <Link to="/links">
+                  <Link to={`${match.path}/links`}>
                     <a href="/#" alt="error">
                       others <BiRightArrowCircle />
                     </a>
@@ -65,7 +75,7 @@ function Vaccination() {
                     <Covid19Info />
                   </Suspense>
                 </Route>
-                <Route path="/vaccineInfo">
+                <Route path={`${match.path}/vaccineInfo`}>
                   <Suspense
                     fallback={
                       <div className="text-center text-primary">loading...</div>
@@ -74,7 +84,7 @@ function Vaccination() {
                     <VaccineInfo />
                   </Suspense>
                 </Route>
-                <Route path="/registration-info">
+                <Route path={`${match.path}/registration-info`}>
                   <Suspense
                     fallback={
                       <div className="text-center text-primary">loading...</div>
@@ -83,8 +93,7 @@ function Vaccination() {
                     <RegistrationInfo />
                   </Suspense>
                 </Route>
-                <Route path="/links">
-                  {' '}
+                <Route path={`${match.path}/links`}>
                   <Suspense
                     fallback={
                       <div className="text-center text-primary">loading...</div>

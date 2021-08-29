@@ -1,6 +1,9 @@
 import React from 'react'
+import { useRouteMatch } from 'react-router-dom'
 
 function VaccineInfo() {
+  const match = useRouteMatch()
+  console.warn(match)
   return (
     <div className="vaccineinfo-style">
       <h3 className="text-center bg-primary">How Vaccine Works </h3>
